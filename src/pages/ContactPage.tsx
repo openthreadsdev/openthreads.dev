@@ -73,6 +73,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
                   required
                   value={form.name}
@@ -90,6 +91,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   required
                   value={form.email}
@@ -107,6 +109,7 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   required
                   rows={5}
                   value={form.message}
