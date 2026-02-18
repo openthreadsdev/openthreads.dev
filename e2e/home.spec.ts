@@ -17,11 +17,15 @@ test.describe("Home Page", () => {
 
     // On mobile, open the menu first if the toggle button is visible
     const menuButton = page.locator('button[aria-label="Toggle menu"]');
+    const blogLink = page.locator('a[href="/blog"]');
+
     if (await menuButton.isVisible()) {
       await menuButton.click();
+      // Wait for the mobile menu to open and link to be visible
+      await blogLink.first().waitFor({ state: "visible" });
     }
 
-    await page.click('a[href="/blog"]');
+    await blogLink.first().click();
     await expect(page).toHaveURL(/.*blog/);
   });
 });

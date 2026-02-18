@@ -12,6 +12,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import TagPage from "./pages/TagPage";
 import ContactPage from "./pages/ContactPage";
 import PrivacyPage from "./pages/PrivacyPage";
+import CareersPage from "./pages/CareersPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/tags/:tag" element={<TagPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/careers" element={<CareersPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

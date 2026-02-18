@@ -44,6 +44,12 @@ export function SiteFooter() {
               Blog
             </Link>
             <Link
+              to="/careers"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              Careers
+            </Link>
+            <Link
               to="/contact"
               className="text-sm text-ot-muted transition-colors hover:text-ot-text"
             >
