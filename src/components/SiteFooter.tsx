@@ -62,6 +62,12 @@ export function SiteFooter() {
               Privacy
             </Link>
             <a
+              href="/sitemap.xml"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              Sitemap
+            </a>
+            <a
               href={config.threadmarkUrl}
               target="_blank"
               rel="noopener noreferrer"
