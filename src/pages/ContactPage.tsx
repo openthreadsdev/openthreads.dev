@@ -14,30 +14,31 @@ export default function ContactPage() {
 
   return (
     <main>
-      <section className="bg-ot-bg section-pad border-b border-ot-border">
+      <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container max-w-xl">
-          <span className="font-mono text-xs text-ot-accent font-medium tracking-wider uppercase mb-3 block">
+          <span className="mb-3 block font-mono text-xs font-medium uppercase tracking-wider text-ot-accent">
             Contact
           </span>
-          <h1 className="text-4xl font-bold text-ot-text mb-4">Get in touch</h1>
-          <p className="text-ot-muted leading-relaxed">
-            Questions about OpenThreads or Threadmark? We're a small studio—we read everything.
+          <h1 className="mb-4 text-4xl font-bold text-ot-text">Get in touch</h1>
+          <p className="leading-relaxed text-ot-muted">
+            Questions about OpenThreads or Threadmark? We're a small studio—we
+            read everything.
           </p>
         </div>
       </section>
 
-      <section className="bg-ot-bg section-pad">
+      <section className="section-pad bg-ot-bg">
         <div className="ot-container max-w-xl">
           {/* Direct email */}
-          <div className="flex items-center gap-3 mb-8 p-4 bg-ot-surface border border-ot-border rounded-card">
-            <div className="w-9 h-9 rounded-lg bg-ot-accent/10 flex items-center justify-center shrink-0">
+          <div className="mb-8 flex items-center gap-3 rounded-card border border-ot-border bg-ot-surface p-4">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-ot-accent/10">
               <Mail size={16} className="text-ot-accent" />
             </div>
             <div>
-              <p className="text-xs text-ot-muted mb-0.5">Email us directly</p>
+              <p className="mb-0.5 text-xs text-ot-muted">Email us directly</p>
               <a
                 href={`mailto:${config.contactEmail}`}
-                className="text-sm font-medium text-ot-accent hover:text-ot-accent-hover transition-colors"
+                className="text-sm font-medium text-ot-accent transition-colors hover:text-ot-accent-hover"
               >
                 {config.contactEmail}
               </a>
@@ -45,17 +46,29 @@ export default function ContactPage() {
           </div>
 
           {submitted ? (
-            <div className="bg-ot-accent/5 border border-ot-accent/30 rounded-card p-8 text-center">
-              <div className="w-12 h-12 rounded-full bg-ot-accent/10 flex items-center justify-center mx-auto mb-4">
+            <div className="rounded-card border border-ot-accent/30 bg-ot-accent/5 p-8 text-center">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-ot-accent/10">
                 <Send size={20} className="text-ot-accent" />
               </div>
-              <h2 className="font-bold text-ot-text mb-2">Message sent</h2>
-              <p className="text-sm text-ot-muted">Thanks for reaching out. We'll get back to you shortly.</p>
+              <h2 className="mb-2 font-bold text-ot-text">Message sent</h2>
+              <p className="text-sm text-ot-muted">
+                Thanks for reaching out. We'll get back to you shortly.
+              </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-5"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+            >
+              <input type="hidden" name="form-name" value="contact" />
               <div>
-                <label className="block text-sm font-medium text-ot-text mb-1.5" htmlFor="name">
+                <label
+                  className="mb-1.5 block text-sm font-medium text-ot-text"
+                  htmlFor="name"
+                >
                   Name
                 </label>
                 <input
@@ -64,12 +77,15 @@ export default function ContactPage() {
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-4 py-2.5 text-sm border border-ot-border rounded-btn bg-ot-surface text-ot-text placeholder:text-ot-muted focus:outline-none focus:ring-2 focus:ring-ot-accent/30 focus:border-ot-accent transition-colors"
+                  className="w-full rounded-btn border border-ot-border bg-ot-surface px-4 py-2.5 text-sm text-ot-text transition-colors placeholder:text-ot-muted focus:border-ot-accent focus:outline-none focus:ring-2 focus:ring-ot-accent/30"
                   placeholder="Your name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-ot-text mb-1.5" htmlFor="email">
+                <label
+                  className="mb-1.5 block text-sm font-medium text-ot-text"
+                  htmlFor="email"
+                >
                   Email
                 </label>
                 <input
@@ -78,12 +94,15 @@ export default function ContactPage() {
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-2.5 text-sm border border-ot-border rounded-btn bg-ot-surface text-ot-text placeholder:text-ot-muted focus:outline-none focus:ring-2 focus:ring-ot-accent/30 focus:border-ot-accent transition-colors"
+                  className="w-full rounded-btn border border-ot-border bg-ot-surface px-4 py-2.5 text-sm text-ot-text transition-colors placeholder:text-ot-muted focus:border-ot-accent focus:outline-none focus:ring-2 focus:ring-ot-accent/30"
                   placeholder="you@company.com"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-ot-text mb-1.5" htmlFor="message">
+                <label
+                  className="mb-1.5 block text-sm font-medium text-ot-text"
+                  htmlFor="message"
+                >
                   Message
                 </label>
                 <textarea
@@ -91,14 +110,16 @@ export default function ContactPage() {
                   required
                   rows={5}
                   value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-4 py-2.5 text-sm border border-ot-border rounded-btn bg-ot-surface text-ot-text placeholder:text-ot-muted focus:outline-none focus:ring-2 focus:ring-ot-accent/30 focus:border-ot-accent transition-colors resize-none"
+                  onChange={(e) =>
+                    setForm({ ...form, message: e.target.value })
+                  }
+                  className="w-full resize-none rounded-btn border border-ot-border bg-ot-surface px-4 py-2.5 text-sm text-ot-text transition-colors placeholder:text-ot-muted focus:border-ot-accent focus:outline-none focus:ring-2 focus:ring-ot-accent/30"
                   placeholder="What's on your mind?"
                 />
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 bg-ot-accent hover:bg-ot-accent-hover text-white font-semibold px-6 py-2.5 rounded-btn transition-colors text-sm"
+                className="inline-flex items-center gap-2 rounded-btn bg-ot-accent px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ot-accent-hover"
               >
                 Send message <Send size={14} />
               </button>

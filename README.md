@@ -1,73 +1,120 @@
-# Welcome to your Lovable project
+# OpenThreads.dev
 
-## Project info
+[![Netlify Status](https://api.netlify.com/api/v1/badges/58786a3a-22f0-4464-af50-0286ea2c3bed/deploy-status)](https://app.netlify.com/projects/openthreads/deploys)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Repository for OpenThreads website.
 
-## How can I edit this code?
+A modern web application built with React, TypeScript, and Vite, featuring a comprehensive UI component library powered by shadcn/ui.
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Framework:** React 18
+- **Build Tool:** Vite
+- **Language:** TypeScript
+- **Styling:** TailwindCSS
+- **UI Components:** shadcn/ui (Radix UI primitives)
+- **Routing:** React Router
+- **State Management:** Redux
+- **Testing:** Vitest + React Testing Library
+- **Code Quality:** ESLint
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Node.js (v18 or higher recommended)
+- npm or yarn package manager
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Clone the repository and install dependencies:
 
-Follow these steps:
+```bash
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Development
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Start the development server:
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:5173` (or the next available port).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Building
 
-**Use GitHub Codespaces**
+Build the production bundle:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run build
+```
 
-## What technologies are used for this project?
+Build for development (with development mode enabled):
 
-This project is built with:
+```bash
+npm run build:dev
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Preview Production Build
 
-## How can I deploy this project?
+Preview the production build locally:
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```bash
+npm run preview
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Available Scripts
 
-Yes, you can!
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build in development mode
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run test` - Run tests once
+- `npm run test:watch` - Run tests in watch mode
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Testing
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project uses Vitest for testing. Tests are located in the `src/test` directory.
+
+Run tests:
+
+```bash
+npm run test
+```
+
+Run tests in watch mode during development:
+
+```bash
+npm run test:watch
+```
+
+## Project Structure
+
+```
+src/
+├── articles/        # Article content
+├── components/      # Reusable UI components
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions and libraries
+├── pages/          # Page components
+├── redux/          # Redux state management
+├── test/           # Test files
+├── App.tsx         # Main application component
+└── main.tsx        # Application entry point
+```
+
+## Code Style
+
+This project follows Conventional Commits format for commit messages:
+
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `refactor:` - Code refactoring
+- `chore:` - Maintenance tasks
+- `docs:` - Documentation updates
+- `test:` - Test updates
+- `style:` - Code style changes
+- `perf:` - Performance improvements

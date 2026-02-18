@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# Build outputs
+dist
+.next
+out
+build
+
+# Cache directories
+.cache
+.vite
+.turbo
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode
+.idea
+
+# Test coverage
+coverage
+
+# Generated files
+*.min.js
+*.min.css
+
+# Public assets that shouldn't be formatted
+public

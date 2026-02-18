@@ -50,7 +50,7 @@ A spreadsheet can technically hold structured data, but nothing enforces it. Eve
 
 ## The Upgrade Path
 
-You don't need to replace spreadsheets overnight. Most teams start by identifying the 5–10 fields that actually matter for compliance outputs, formalizing those first, and building export pipelines around a consistent schema.
+You don't need to replace spreadsheets overnight. Most teams start by identifying the 5–10 fields that actually matter for compliance outputs, formalising those first, and building export pipelines around a consistent schema.
 
 That's the core of what we're building at OpenThreads: tools that make structured compliance data practical for teams that aren't compliance specialists.
 
@@ -172,9 +172,9 @@ Without change history, you cannot answer the question: "What did your product r
 
 Don't try to implement everything at once. A reasonable sequence:
 
-1. **Standardize product identity** (SKUs, categories, markets)
-2. **Formalize composition data** (pick a schema, enforce it for all new products)
-3. **Centralize test records** (even if just linked documents initially)
+1. **Standardise product identity** (SKUs, categories, markets)
+2. **Formalise composition data** (pick a schema, enforce it for all new products)
+3. **Centralise test records** (even if just linked documents initially)
 4. **Add regulatory status tracking** (per regulation, per product)
 5. **Enable change logging** (this is where tooling really helps)
 
@@ -185,7 +185,8 @@ Audit-ready product records aren't a documentation project—they're a data arch
   },
   {
     slug: "digital-product-passports-for-small-merchants",
-    title: "Digital Product Passports: What Small Merchants Actually Need First",
+    title:
+      "Digital Product Passports: What Small Merchants Actually Need First",
     description:
       "DPPs are coming. But most DPP coverage focuses on enterprise readiness. Here's what actually matters for smaller EU-facing merchants.",
     date: "2024-12-18",
@@ -249,7 +250,8 @@ DPPs are real and coming. The smart move for small merchants is to start on the 
   },
   {
     slug: "traceability-without-blockchain",
-    title: "Traceability Without Blockchain: Immutable Logs, Change History, and Trust",
+    title:
+      "Traceability Without Blockchain: Immutable Logs, Change History, and Trust",
     description:
       "Blockchain gets proposed for every traceability problem. There's a simpler, more practical answer—and it works better for most product compliance use cases.",
     date: "2025-01-08",
@@ -322,7 +324,7 @@ Traceability is about accountability and verifiability, not decentralization. Fo
 
 Every product team has a feature list. The hard work is deciding what stays off it—and being honest about why.
 
-Threadmark is a compliance data management tool for product-based businesses. The problem space is genuinely large: it touches data modeling, document management, supplier communication, regulatory frameworks across jurisdictions, and integration with ecommerce and ERP systems.
+Threadmark is a compliance data management tool for product-based businesses. The problem space is genuinely large: it touches data modelling, document management, supplier communication, regulatory frameworks across jurisdictions, and integration with ecommerce and ERP systems.
 
 We can't build all of that in version one. Here's how we think about what we're doing first.
 
