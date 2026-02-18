@@ -20,13 +20,22 @@ function renderContent(content: string): string {
       }
       if (line === "") return `</ul><p class="mb-0"></p>`;
       const inlineLine = line
-        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-ot-text font-semibold">$1</strong>')
-        .replace(/`(.*?)`/g, '<code class="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">$1</code>');
+        .replace(
+          /\*\*(.*?)\*\*/g,
+          '<strong class="text-ot-text font-semibold">$1</strong>'
+        )
+        .replace(
+          /`(.*?)`/g,
+          '<code class="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">$1</code>'
+        );
       return `<p class="text-ot-muted leading-relaxed mb-4">${inlineLine}</p>`;
     })
     .join("\n")
     .replace(/<\/ul>\n<p class="mb-0"><\/p>\n<li/g, "<li")
-    .replace(/(<li.*?<\/li>\n?)+/g, (match) => `<ul class="list-disc pl-5 space-y-1.5 mb-4">${match}</ul>`);
+    .replace(
+      /(<li.*?<\/li>\n?)+/g,
+      (match) => `<ul class="list-disc pl-5 space-y-1.5 mb-4">${match}</ul>`
+    );
 }
 
 export default function BlogPostPage() {
@@ -47,31 +56,50 @@ export default function BlogPostPage() {
   return (
     <main>
       {/* Header */}
-      <section className="bg-ot-bg section-pad border-b border-ot-border">
+      <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container max-w-3xl">
-          <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm text-ot-muted hover:text-ot-accent transition-colors mb-8">
+          <Link
+            to="/blog"
+            className="mb-8 inline-flex items-center gap-1.5 text-sm text-ot-muted transition-colors hover:text-ot-accent"
+          >
             <ArrowLeft size={14} /> All posts
           </Link>
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {post.tags.map((t) => <OtTag key={t} tag={t} />)}
+          <div className="mb-4 flex flex-wrap gap-1.5">
+            {post.tags.map((t) => (
+              <OtTag key={t} tag={t} />
+            ))}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-ot-text leading-tight mb-4">
+          <h1 className="mb-4 text-3xl font-bold leading-tight text-ot-text md:text-4xl">
             {post.title}
           </h1>
-          <p className="text-lg text-ot-muted mb-6">{post.description}</p>
-          <div className="flex items-center justify-between flex-wrap gap-4">
+          <p className="mb-6 text-lg text-ot-muted">{post.description}</p>
+          <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-4 font-mono text-xs text-ot-muted">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
-              <span className="flex items-center gap-1"><Clock size={12} />{post.readingTime} min read</span>
+              <span className="flex items-center gap-1">
+                <Clock size={12} />
+                {post.readingTime} min read
+              </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-ot-muted mr-1 flex items-center gap-1"><Share2 size={12} />Share:</span>
-              <a href={twitterUrl} target="_blank" rel="noopener noreferrer"
-                className="font-mono text-xs text-ot-muted hover:text-ot-accent transition-colors px-2.5 py-1 border border-ot-border rounded-full hover:border-ot-accent">
+              <span className="mr-1 flex items-center gap-1 text-xs text-ot-muted">
+                <Share2 size={12} />
+                Share:
+              </span>
+              <a
+                href={twitterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-ot-border px-2.5 py-1 font-mono text-xs text-ot-muted transition-colors hover:border-ot-accent hover:text-ot-accent"
+              >
                 X / Twitter
               </a>
-              <a href={linkedinUrl} target="_blank" rel="noopener noreferrer"
-                className="font-mono text-xs text-ot-muted hover:text-ot-accent transition-colors px-2.5 py-1 border border-ot-border rounded-full hover:border-ot-accent">
+              <a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-ot-border px-2.5 py-1 font-mono text-xs text-ot-muted transition-colors hover:border-ot-accent hover:text-ot-accent"
+              >
                 LinkedIn
               </a>
             </div>
@@ -90,30 +118,52 @@ export default function BlogPostPage() {
       </section>
 
       {/* Prev / Next */}
-      <section className="bg-ot-surface border-t border-ot-border py-10">
-        <div className="ot-container max-w-3xl grid grid-cols-2 gap-4">
+      <section className="border-t border-ot-border bg-ot-surface py-10">
+        <div className="ot-container grid max-w-3xl grid-cols-2 gap-4">
           {prev ? (
-            <Link to={`/blog/${prev.slug}`} className="group p-4 border border-ot-border rounded-card hover:border-ot-accent transition-colors">
-              <span className="text-xs font-mono text-ot-muted mb-1 block">← Previous</span>
-              <span className="text-sm font-medium text-ot-text group-hover:text-ot-accent transition-colors">{prev.title}</span>
+            <Link
+              to={`/blog/${prev.slug}`}
+              className="group rounded-card border border-ot-border p-4 transition-colors hover:border-ot-accent"
+            >
+              <span className="mb-1 block font-mono text-xs text-ot-muted">
+                ← Previous
+              </span>
+              <span className="text-sm font-medium text-ot-text transition-colors group-hover:text-ot-accent">
+                {prev.title}
+              </span>
             </Link>
-          ) : <div />}
+          ) : (
+            <div />
+          )}
           {next ? (
-            <Link to={`/blog/${next.slug}`} className="group p-4 border border-ot-border rounded-card hover:border-ot-accent transition-colors text-right ml-auto w-full">
-              <span className="text-xs font-mono text-ot-muted mb-1 block">Next →</span>
-              <span className="text-sm font-medium text-ot-text group-hover:text-ot-accent transition-colors">{next.title}</span>
+            <Link
+              to={`/blog/${next.slug}`}
+              className="group ml-auto w-full rounded-card border border-ot-border p-4 text-right transition-colors hover:border-ot-accent"
+            >
+              <span className="mb-1 block font-mono text-xs text-ot-muted">
+                Next →
+              </span>
+              <span className="text-sm font-medium text-ot-text transition-colors group-hover:text-ot-accent">
+                {next.title}
+              </span>
             </Link>
-          ) : <div />}
+          ) : (
+            <div />
+          )}
         </div>
       </section>
 
       {/* Related posts */}
       {related.length > 0 && (
-        <section className="bg-ot-bg section-pad border-t border-ot-border">
+        <section className="section-pad border-t border-ot-border bg-ot-bg">
           <div className="ot-container">
-            <h2 className="text-xl font-bold text-ot-text mb-6">Related posts</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {related.map((p) => <PostCard key={p.slug} post={p} />)}
+            <h2 className="mb-6 text-xl font-bold text-ot-text">
+              Related posts
+            </h2>
+            <div className="grid gap-6 md:grid-cols-3">
+              {related.map((p) => (
+                <PostCard key={p.slug} post={p} />
+              ))}
             </div>
           </div>
         </section>
