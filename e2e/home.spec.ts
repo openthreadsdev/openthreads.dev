@@ -8,7 +8,7 @@ test.describe("Home Page", () => {
 
   test("should have navigation menu", async ({ page }) => {
     await page.goto("/");
-    const nav = page.locator("nav");
+    const nav = page.locator("nav").first();
     await expect(nav).toBeVisible();
   });
 
