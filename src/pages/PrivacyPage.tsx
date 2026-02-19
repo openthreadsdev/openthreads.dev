@@ -1,9 +1,25 @@
 import { Link } from "react-router-dom";
 import { config } from "@/lib/config";
+import { SEOHead, StructuredData } from "@/components/seo";
+import { generateBreadcrumbSchema } from "@/lib/schemas";
 
 export default function PrivacyPage() {
   return (
     <main>
+      <SEOHead
+        title="Privacy Policy"
+        description="OpenThreads privacy policy and data handling practices."
+        canonicalPath="/privacy"
+        ogType="website"
+        noindex={true}
+      />
+      <StructuredData
+        schema={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Privacy", item: "/privacy" },
+        ])}
+      />
+
       <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container max-w-2xl">
           <span className="mb-3 block font-mono text-xs font-medium uppercase tracking-wider text-ot-accent">

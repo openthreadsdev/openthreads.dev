@@ -4,7 +4,7 @@ export const config = {
   threadmarkUrl: "https://threadmark.openthreads.dev",
   contactEmail: "hello@openthreads.dev",
   social: {
-    twitter: "https://twitter.com/openthreads",
+    twitter: "https://x.com/openthreads",
     linkedin: "https://linkedin.com/company/openthreads",
   },
 };

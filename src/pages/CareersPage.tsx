@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { SEOHead, StructuredData } from "@/components/seo";
+import { generateBreadcrumbSchema } from "@/lib/schemas";
 
 const responsibilities = [
   {
@@ -67,6 +69,19 @@ const notThisRole = [
 export default function CareersPage() {
   return (
     <main>
+      <SEOHead
+        title="Careers"
+        description="Join the OpenThreads team building compliance-first product data infrastructure."
+        canonicalPath="/careers"
+        ogType="website"
+      />
+      <StructuredData
+        schema={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Careers", item: "/careers" },
+        ])}
+      />
+
       {/* Hero */}
       <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container max-w-3xl">
