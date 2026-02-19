@@ -9,11 +9,11 @@ export function SiteFooter() {
           {/* Brand */}
           <div>
             <div className="mb-2 flex items-center gap-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-ot-accent">
-                <span className="font-mono text-xs font-bold text-white">
-                  OT
-                </span>
-              </div>
+              <img
+                src="/assets/spool/spool-icon.svg"
+                alt={`${config.siteName} logo`}
+                className="h-6 w-6"
+              />
               <span className="text-sm font-bold text-ot-text">
                 {config.siteName}
               </span>
