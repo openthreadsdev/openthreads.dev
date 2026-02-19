@@ -2,6 +2,11 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { getPostsByTag, getAllTags } from "@/lib/blog";
 import { PostCard } from "@/components/PostCard";
+import { SEOHead, StructuredData } from "@/components/seo";
+import {
+  generateBreadcrumbSchema,
+  generateCollectionPageSchema,
+} from "@/lib/schemas";
 
 export default function TagPage() {
   const { tag } = useParams<{ tag: string }>();
@@ -13,6 +18,27 @@ export default function TagPage() {
 
   return (
     <main>
+      <SEOHead
+        title={`#${tag}`}
+        description={`${tagPosts.length} article${tagPosts.length !== 1 ? "s" : ""} about ${tag} from the OpenThreads blog.`}
+        canonicalPath={`/tags/${tag}`}
+        ogType="website"
+      />
+      <StructuredData
+        schema={[
+          generateBreadcrumbSchema([
+            { name: "Home", item: "/" },
+            { name: "Blog", item: "/blog" },
+            { name: `#${tag}`, item: `/tags/${tag}` },
+          ]),
+          generateCollectionPageSchema(
+            `${tag} articles`,
+            `Articles tagged with ${tag}`,
+            tagPosts
+          ),
+        ]}
+      />
+
       <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container">
           <Link
