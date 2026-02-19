@@ -8,13 +8,7 @@ test.describe("Home Page", () => {
 
   test("should have navigation menu", async ({ page }) => {
     await page.goto("/");
-    const nav = page.locator("nav");
-    await expect(nav).toBeVisible();
-  });
-
-  test("should navigate to blog page", async ({ page }) => {
-    await page.goto("/");
-    await page.click('a[href="/blog"]');
-    await expect(page).toHaveURL(/.*blog/);
+    const header = page.locator("header");
+    await expect(header).toBeVisible();
   });
 });

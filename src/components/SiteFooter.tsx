@@ -3,46 +3,88 @@ import { config } from "@/lib/config";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-ot-border bg-ot-surface mt-auto">
+    <footer className="mt-auto border-t border-ot-border bg-ot-surface">
       <div className="ot-container py-12">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-6 h-6 rounded-md bg-ot-accent flex items-center justify-center">
-                <span className="text-white font-mono font-bold text-xs">OT</span>
-              </div>
-              <span className="font-bold text-ot-text text-sm">{config.siteName}</span>
+            <div className="mb-2 flex items-center gap-2">
+              <img
+                src="/assets/spool/spool-icon.svg"
+                alt={`${config.siteName} logo`}
+                className="h-6 w-6"
+              />
+              <span className="text-sm font-bold text-ot-text">
+                {config.siteName}
+              </span>
             </div>
-            <p className="text-xs text-ot-muted max-w-xs leading-relaxed">
+            <p className="max-w-xs text-xs leading-relaxed text-ot-muted">
               Compliance-first product data infrastructure studio.
             </p>
           </div>
 
           {/* Links */}
           <nav className="flex flex-wrap gap-6">
-            <Link to="/" className="text-sm text-ot-muted hover:text-ot-text transition-colors">Home</Link>
-            <Link to="/about" className="text-sm text-ot-muted hover:text-ot-text transition-colors">About</Link>
-            <Link to="/blog" className="text-sm text-ot-muted hover:text-ot-text transition-colors">Blog</Link>
-            <Link to="/contact" className="text-sm text-ot-muted hover:text-ot-text transition-colors">Contact</Link>
-            <Link to="/privacy" className="text-sm text-ot-muted hover:text-ot-text transition-colors">Privacy</Link>
+            <Link
+              to="/"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              About
+            </Link>
+            <Link
+              to="/blog"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              Blog
+            </Link>
+            <Link
+              to="/careers"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              Careers
+            </Link>
+            <Link
+              to="/contact"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              Contact
+            </Link>
+            <Link
+              to="/privacy"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              Privacy
+            </Link>
+            <a
+              href="/sitemap.xml"
+              className="text-sm text-ot-muted transition-colors hover:text-ot-text"
+            >
+              Sitemap
+            </a>
             <a
               href={config.threadmarkUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-ot-accent hover:text-ot-accent-hover transition-colors font-medium"
+              className="text-sm font-medium text-ot-accent transition-colors hover:text-ot-accent-hover"
             >
               Threadmark ↗
             </a>
           </nav>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-ot-border flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div className="mt-8 flex flex-col justify-between gap-3 border-t border-ot-border pt-6 md:flex-row md:items-center">
           <p className="text-xs text-ot-muted">
             © {new Date().getFullYear()} OpenThreads. All rights reserved.
           </p>
-          <p className="text-xs text-ot-muted italic">
-            Not legal advice. OpenThreads provides data infrastructure tools, not legal services.
+          <p className="text-xs italic text-ot-muted">
+            Not legal advice. OpenThreads provides data infrastructure tools,
+            not legal services.
           </p>
         </div>
       </div>
