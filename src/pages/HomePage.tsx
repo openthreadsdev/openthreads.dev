@@ -9,9 +9,14 @@ import {
   BarChart3,
 } from "lucide-react";
 import { config } from "@/lib/config";
-import { posts, formatDate } from "@/lib/blog";
+import { posts } from "@/lib/blog";
 import { PostCard } from "@/components/PostCard";
-import { OtTag } from "@/components/OtTag";
+import { SEOHead, StructuredData } from "@/components/seo";
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/schemas";
 
 const whatWeDo = [
   {
@@ -58,6 +63,15 @@ const recentPosts = posts.slice(0, 3);
 export default function HomePage() {
   return (
     <main>
+      <SEOHead canonicalPath="/" ogType="website" />
+      <StructuredData
+        schema={[
+          generateOrganizationSchema(),
+          generateWebSiteSchema(),
+          generateBreadcrumbSchema([{ name: "Home", item: "/" }]),
+        ]}
+      />
+
       {/* Hero */}
       <section className="grid-bg section-pad relative overflow-hidden bg-ot-bg">
         <div className="ot-container relative">

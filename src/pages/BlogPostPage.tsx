@@ -4,6 +4,8 @@ import { getPostBySlug, getRelatedPosts, posts, formatDate } from "@/lib/blog";
 import { OtTag } from "@/components/OtTag";
 import { PostCard } from "@/components/PostCard";
 import { config } from "@/lib/config";
+import { SEOHead, StructuredData } from "@/components/seo";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schemas";
 
 // Simple markdown-like renderer for the static blog content
 function renderContent(content: string): string {
@@ -50,11 +52,33 @@ export default function BlogPostPage() {
   const next = posts[currentIndex - 1];
 
   const shareUrl = `${window.location.origin}/blog/${post.slug}`;
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`;
+  const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 
   return (
     <main>
+      <SEOHead
+        title={post.title}
+        description={post.description}
+        canonicalPath={`/blog/${post.slug}`}
+        ogType="article"
+        article={{
+          publishedTime: post.date,
+          modifiedTime: post.date,
+          tags: post.tags,
+        }}
+      />
+      <StructuredData
+        schema={[
+          generateArticleSchema(post),
+          generateBreadcrumbSchema([
+            { name: "Home", item: "/" },
+            { name: "Blog", item: "/blog" },
+            { name: post.title, item: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
+
       {/* Header */}
       <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container max-w-3xl">
@@ -87,7 +111,7 @@ export default function BlogPostPage() {
                 Share:
               </span>
               <a
-                href={twitterUrl}
+                href={xUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border border-ot-border px-2.5 py-1 font-mono text-xs text-ot-muted transition-colors hover:border-ot-accent hover:text-ot-accent"

@@ -2,7 +2,11 @@ import { useState, useMemo } from "react";
 import { Search } from "lucide-react";
 import { posts, getAllTags } from "@/lib/blog";
 import { PostCard } from "@/components/PostCard";
-import { OtTag } from "@/components/OtTag";
+import { SEOHead, StructuredData } from "@/components/seo";
+import {
+  generateBreadcrumbSchema,
+  generateCollectionPageSchema,
+} from "@/lib/schemas";
 
 export default function BlogPage() {
   const [query, setQuery] = useState("");
@@ -23,6 +27,26 @@ export default function BlogPage() {
 
   return (
     <main>
+      <SEOHead
+        title="Blog"
+        description="Research, perspectives, and practical guides on product compliance data from the OpenThreads studio."
+        canonicalPath="/blog"
+        ogType="website"
+      />
+      <StructuredData
+        schema={[
+          generateBreadcrumbSchema([
+            { name: "Home", item: "/" },
+            { name: "Blog", item: "/blog" },
+          ]),
+          generateCollectionPageSchema(
+            "OpenThreads Blog",
+            "Research and insights on product compliance infrastructure",
+            posts
+          ),
+        ]}
+      />
+
       {/* Header */}
       <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container">

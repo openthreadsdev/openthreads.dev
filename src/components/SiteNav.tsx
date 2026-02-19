@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { config } from "@/lib/config";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -164,6 +165,7 @@ export function SiteNav() {
               {link.label}
             </Link>
           ))}
+          <ThemeToggle />
           <a
             href={config.threadmarkUrl}
             target="_blank"
@@ -176,13 +178,16 @@ export function SiteNav() {
         </nav>
 
         {/* Mobile toggle */}
-        <button
-          className="text-ot-muted transition-colors hover:text-ot-text md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button
+            className="text-ot-muted transition-colors hover:text-ot-text"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
