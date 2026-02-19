@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Send, Mail } from "lucide-react";
 import { config } from "@/lib/config";
+import { SEOHead, StructuredData } from "@/components/seo";
+import { generateBreadcrumbSchema } from "@/lib/schemas";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -14,6 +16,19 @@ export default function ContactPage() {
 
   return (
     <main>
+      <SEOHead
+        title="Contact"
+        description="Get in touch with the OpenThreads team about compliance data infrastructure."
+        canonicalPath="/contact"
+        ogType="website"
+      />
+      <StructuredData
+        schema={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Contact", item: "/contact" },
+        ])}
+      />
+
       <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container max-w-xl">
           <span className="mb-3 block font-mono text-xs font-medium uppercase tracking-wider text-ot-accent">
@@ -73,6 +88,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
                   required
                   value={form.name}
@@ -90,6 +106,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   required
                   value={form.email}
@@ -107,6 +124,7 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   required
                   rows={5}
                   value={form.message}
