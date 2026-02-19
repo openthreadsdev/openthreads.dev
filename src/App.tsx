@@ -31,7 +31,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter future={{ v7_startTransition: true }}>
             <div className="flex min-h-screen flex-col bg-ot-bg">
               <SiteNav />
               <div className="flex-1">
