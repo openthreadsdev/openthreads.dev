@@ -6,12 +6,36 @@ import { generateBreadcrumbSchema } from "@/lib/schemas";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Static form simulation
-    setSubmitted(true);
+    setSubmitting(true);
+
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(
+          Array.from(formData.entries()) as [string, string][]
+        ).toString(),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Failed to submit form. Please try again or email us directly.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Failed to submit form. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -137,9 +161,10 @@ export default function ContactPage() {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 rounded-btn bg-ot-accent px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ot-accent-hover"
+                disabled={submitting}
+                className="inline-flex items-center gap-2 rounded-btn bg-ot-accent px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ot-accent-hover disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Send message <Send size={14} />
+                {submitting ? "Sending..." : "Send message"} <Send size={14} />
               </button>
             </form>
           )}
