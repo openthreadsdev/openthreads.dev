@@ -25,6 +25,7 @@ function generateSitemap(): string {
     { path: "/", changefreq: "weekly" as const, priority: "1.0" },
     { path: "/about", changefreq: "monthly" as const, priority: "0.8" },
     { path: "/blog", changefreq: "weekly" as const, priority: "0.9" },
+    { path: "/careers", changefreq: "monthly" as const, priority: "0.7" },
     { path: "/contact", changefreq: "monthly" as const, priority: "0.7" },
     { path: "/privacy", changefreq: "yearly" as const, priority: "0.3" },
   ];
@@ -83,7 +84,7 @@ function main() {
     writeFileSync("public/sitemap.xml", sitemap, "utf-8");
     console.log("✓ Sitemap generated successfully at public/sitemap.xml");
     console.log(
-      `  Generated ${posts.length} blog posts + ${getAllTags().length} tag pages + 5 static pages`
+      `  Generated ${posts.length} blog posts + ${getAllTags().length} tag pages + 6 static pages`
     );
   } catch (error) {
     console.error("Error generating sitemap:", error);

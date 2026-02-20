@@ -1,5 +1,7 @@
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { config } from "@/lib/config";
+import { SEOHead, StructuredData } from "@/components/seo";
+import { generateBreadcrumbSchema } from "@/lib/schemas";
 
 const principles = [
   {
@@ -41,6 +43,19 @@ const values = [
 export default function AboutPage() {
   return (
     <main>
+      <SEOHead
+        title="About"
+        description="OpenThreads is a compliance-first product data infrastructure studio building structured systems for product compliance."
+        canonicalPath="/about"
+        ogType="website"
+      />
+      <StructuredData
+        schema={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "About", item: "/about" },
+        ])}
+      />
+
       {/* Hero */}
       <section className="section-pad border-b border-ot-border bg-ot-bg">
         <div className="ot-container max-w-2xl">

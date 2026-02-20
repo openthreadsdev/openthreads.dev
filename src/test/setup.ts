@@ -1,5 +1,10 @@
 import "@testing-library/jest-dom";
 import { configureAxe } from "vitest-axe";
+import { toHaveNoViolations } from "vitest-axe/matchers";
+import { expect } from "vitest";
+
+// Extend expect with axe matchers
+expect.extend({ toHaveNoViolations });
 
 // Configure axe for accessibility testing
 export const axe = configureAxe({

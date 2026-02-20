@@ -9,21 +9,21 @@ interface PostCardProps {
 
 export function PostCard({ post }: PostCardProps) {
   return (
-    <article className="bg-ot-surface border border-ot-border rounded-card p-6 card-hover group">
-      <div className="flex flex-wrap gap-1.5 mb-4">
+    <article className="card-hover group rounded-card border border-ot-border bg-ot-surface p-6">
+      <div className="mb-4 flex flex-wrap gap-1.5">
         {post.tags.map((t) => (
           <OtTag key={t} tag={t} />
         ))}
       </div>
       <Link to={`/blog/${post.slug}`}>
-        <h2 className="text-lg font-bold text-ot-text group-hover:text-ot-accent transition-colors mb-2 leading-snug">
+        <h2 className="mb-2 text-lg font-bold leading-snug text-ot-text transition-colors group-hover:text-ot-accent">
           {post.title}
         </h2>
       </Link>
-      <p className="text-sm text-ot-muted leading-relaxed mb-4">
+      <p className="mb-4 text-sm leading-relaxed text-ot-muted">
         {post.description}
       </p>
-      <div className="flex items-center gap-4 text-xs text-ot-muted font-mono">
+      <div className="flex items-center gap-4 font-mono text-xs text-ot-muted">
         <time dateTime={post.date}>{formatDate(post.date)}</time>
         <span className="flex items-center gap-1">
           <Clock size={12} />
