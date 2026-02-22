@@ -10,19 +10,23 @@ test.describe("Contact Page", () => {
   });
 
   test("should display contact form", async ({ page }) => {
-    await expect(page.locator('form[name="contact"]')).toBeVisible();
+    await expect(
+      page.locator('form[name="contact"]:not([hidden])')
+    ).toBeVisible();
   });
 
   test("should have required form fields", async ({ page }) => {
-    await expect(page.locator('input[name="name"]')).toBeVisible();
-    await expect(page.locator('input[name="email"]')).toBeVisible();
-    await expect(page.locator('textarea[name="message"]')).toBeVisible();
+    const form = page.locator('form[name="contact"]:not([hidden])');
+    await expect(form.locator('input[name="name"]')).toBeVisible();
+    await expect(form.locator('input[name="email"]')).toBeVisible();
+    await expect(form.locator('textarea[name="message"]')).toBeVisible();
   });
 
   test("should show validation for required fields", async ({ page }) => {
-    await page.click('button[type="submit"]');
+    const form = page.locator('form[name="contact"]:not([hidden])');
+    await form.locator('button[type="submit"]').click();
     // HTML5 validation should prevent empty form submission
-    const nameInput = page.locator('input[name="name"]');
+    const nameInput = form.locator('input[name="name"]');
     await expect(nameInput).toBeFocused();
   });
 });
