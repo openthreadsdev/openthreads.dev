@@ -18,6 +18,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
+    "test:smoke": "npm run build && playwright test --config=playwright.config.prod.ts",
     "prepare": "husky"
   },
   "dependencies": {
