@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "npm run sitemap && vite build",
     "build:dev": "vite build --mode development",
-    "lint": "eslint .",
+    "lint": "eslint . && npm run lint:spelling",
+    "lint:spelling": "tsx scripts/check-british-spelling.ts",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "preview": "vite preview",
@@ -110,6 +111,9 @@
     ],
     "*.{json,css,md}": [
       "prettier --write"
+    ],
+    "*.{ts,tsx,js,jsx,md,mdx}": [
+      "tsx scripts/check-british-spelling.ts"
     ]
   }
 }

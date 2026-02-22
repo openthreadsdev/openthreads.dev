@@ -8,9 +8,10 @@ export interface BreadcrumbItem {
 }
 
 export function generateOrganizationSchema() {
+  // spelling:disable
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "Organization", // spelling:disable
     name: config.siteName,
     url: DEFAULT_SEO.siteUrl,
     logo: `${DEFAULT_SEO.siteUrl}/assets/logo.png`,
@@ -60,12 +61,12 @@ export function generateArticleSchema(post: Post) {
     datePublished: post.date,
     dateModified: post.date,
     author: {
-      "@type": "Organization",
+      "@type": "Organization", // spelling:disable
       name: config.siteName,
       url: DEFAULT_SEO.siteUrl,
     },
     publisher: {
-      "@type": "Organization",
+      "@type": "Organization", // spelling:disable
       name: config.siteName,
       url: DEFAULT_SEO.siteUrl,
       logo: {

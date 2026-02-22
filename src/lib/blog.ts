@@ -201,7 +201,7 @@ But a large slice of the businesses that will be legally required to produce DPP
 
 ## What the ESPR Actually Requires (and When)
 
-The European Ecodesign for Sustainable Products Regulation (ESPR) mandates DPPs for product categories in waves, starting with textiles, electronics, and construction products. Exact timing per category is still being finalized via delegated acts, but the framework is law.
+The European Ecodesign for Sustainable Products Regulation (ESPR) mandates DPPs for product categories in waves, starting with textiles, electronics, and construction products. Exact timing per category is still being finalised via delegated acts, but the framework is law.
 
 A DPP, at minimum, must contain:
 - Product identity and description
@@ -308,7 +308,7 @@ This is implementable by a small engineering team in days. A blockchain integrat
 
 ## Conclusion
 
-Traceability is about accountability and verifiability, not decentralization. For product compliance, an append-only log with cryptographic signatures gives you everything you need. Start there.
+Traceability is about accountability and verifiability, not decentralisation. For product compliance, an append-only log with cryptographic signatures gives you everything you need. Start there.
     `,
   },
   {
