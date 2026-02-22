@@ -1,7 +1,15 @@
-import { writeFileSync } from "fs";
-import { posts, getAllTags } from "../src/lib/blog.js";
+import { writeFileSync, readdirSync, readFileSync } from "fs";
+import { join } from "path";
+import matter from "gray-matter"; // spelling:disable
 
 const SITE_URL = "https://openthreads.dev";
+
+interface Post {
+  slug: string;
+  title: string;
+  date: string;
+  tags: string[];
+}
 
 interface SitemapUrl {
   loc: string;
@@ -17,8 +25,40 @@ interface SitemapUrl {
   priority: string;
 }
 
+function loadPosts(): Post[] {
+  const articlesDir = join(process.cwd(), "src", "articles");
+  const files = readdirSync(articlesDir).filter((f) => f.endsWith(".md"));
+
+  return files
+    .map((filename) => {
+      const filepath = join(articlesDir, filename);
+      const rawContent = readFileSync(filepath, "utf-8");
+      const { data: frontmatter } = matter(rawContent);
+
+      // Extract slug from filename: 2024-11-12-slug.md -> slug
+      const slug = filename
+        .replace(/^\d{4}-\d{2}-\d{2}-/, "")
+        .replace(".md", "");
+
+      return {
+        slug,
+        title: frontmatter.title,
+        date: frontmatter.date,
+        tags: frontmatter.tags || [],
+      };
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+function getAllTags(posts: Post[]): string[] {
+  const tags = new Set<string>();
+  posts.forEach((p) => p.tags.forEach((t) => tags.add(t)));
+  return Array.from(tags).sort();
+}
+
 function generateSitemap(): string {
   const urls: SitemapUrl[] = [];
+  const posts = loadPosts();
 
   // Static pages
   const staticPages = [
@@ -50,7 +90,7 @@ function generateSitemap(): string {
   });
 
   // Tag pages
-  const tags = getAllTags();
+  const tags = getAllTags(posts);
   tags.forEach((tag) => {
     urls.push({
       loc: `${SITE_URL}/tags/${encodeURIComponent(tag)}`,
@@ -80,11 +120,12 @@ ${urls
 
 function main() {
   try {
+    const posts = loadPosts();
     const sitemap = generateSitemap();
     writeFileSync("public/sitemap.xml", sitemap, "utf-8");
     console.log("✓ Sitemap generated successfully at public/sitemap.xml");
     console.log(
-      `  Generated ${posts.length} blog posts + ${getAllTags().length} tag pages + 6 static pages`
+      `  Generated ${posts.length} blog posts + ${getAllTags(posts).length} tag pages + 6 static pages`
     );
   } catch (error) {
     console.error("Error generating sitemap:", error);

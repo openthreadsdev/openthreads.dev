@@ -1,3 +1,5 @@
+import matter from "gray-matter"; // spelling:disable
+
 export interface Post {
   slug: string;
   title: string;
@@ -8,7 +10,44 @@ export interface Post {
   content: string;
 }
 
-export const posts: Post[] = [
+// Load all markdown files from src/articles/
+const articleModules = import.meta.glob("/src/articles/*.md", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
+
+function extractSlugFromFilename(filepath: string): string {
+  // Extract filename from path: /src/articles/2024-11-12-why-compliance-fails.md
+  // -> why-compliance-fails
+  const filename = filepath.split("/").pop() || "";
+  const withoutExtension = filename.replace(".md", "");
+  const slug = withoutExtension.replace(/^\d{4}-\d{2}-\d{2}-/, "");
+  return slug;
+}
+
+// Parse markdown files into Post objects
+export const posts: Post[] = Object.entries(articleModules)
+  .map(([filepath, rawContent]) => {
+    const { data: frontmatter, content: markdown } = matter(
+      rawContent as string
+    );
+    const slug = extractSlugFromFilename(filepath);
+
+    return {
+      slug,
+      title: frontmatter.title,
+      description: frontmatter.description,
+      date: frontmatter.date,
+      tags: frontmatter.tags || [],
+      readingTime: frontmatter.readingTime,
+      content: markdown.trim(),
+    };
+  })
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Keep old hardcoded posts temporarily for comparison
+const oldPosts: Post[] = [
   {
     slug: "why-compliance-fails-in-spreadsheets",
     title: "Why Compliance Work Fails in Spreadsheets",
