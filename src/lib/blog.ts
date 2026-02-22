@@ -8,6 +8,7 @@ export interface Post {
   tags: string[];
   readingTime: number;
   content: string;
+  draft?: boolean;
 }
 
 // Load all markdown files from src/articles/
@@ -27,7 +28,7 @@ function extractSlugFromFilename(filepath: string): string {
 }
 
 // Parse markdown files into Post objects
-export const posts: Post[] = Object.entries(articleModules)
+const allPosts: Post[] = Object.entries(articleModules)
   .map(([filepath, rawContent]) => {
     const { data: frontmatter, content: markdown } = matter(
       rawContent as string
@@ -42,9 +43,15 @@ export const posts: Post[] = Object.entries(articleModules)
       tags: frontmatter.tags || [],
       readingTime: frontmatter.readingTime,
       content: markdown.trim(),
+      draft: frontmatter.draft || false,
     };
   })
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Filter out draft posts in production
+export const posts: Post[] = import.meta.env.DEV
+  ? allPosts
+  : allPosts.filter((post) => !post.draft);
 
 export function getAllTags(): string[] {
   const tags = new Set<string>();

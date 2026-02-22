@@ -23,7 +23,7 @@ The fundamental problem we're solving: small and mid-market product businesses c
 
 Not because the data doesn't exist—usually it does, scattered across emails, supplier PDFs, and spreadsheets. But it's not in a queryable, exportable, versioned form. When an audit comes, or a large retail partner requests documentation, or a regulatory deadline approaches, the manual work is enormous.
 
-Threadmark's MVP tests one hypothesis: if you give teams a simple, structured way to maintain product compliance records, they'll use it and it'll be worth paying for.
+Threadmark's MVP focuses on solving this core problem: giving teams a simple, structured way to maintain product compliance records that actually gets used in their daily workflow.
 
 ## What's In (v1)
 
@@ -61,7 +61,7 @@ Two things we won't compromise on:
 
 Success in v1 looks like: teams using Threadmark as their primary place for compliance record management, and successfully producing documentation when audits or partner requests arrive—without a multi-day manual scramble.
 
-If that's true, we'll have validated the hypothesis and can expand scope sensibly.
+If that's true, we'll know the foundation is solid and can expand scope sensibly.
 
 ## Conclusion
 
