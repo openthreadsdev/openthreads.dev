@@ -42,6 +42,8 @@
     </form>
 
     <div id="root"></div>
+    <!-- Load polyfills first to ensure Buffer is available globally -->
+    <script type="module" src="/src/polyfills.ts"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
