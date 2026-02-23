@@ -135,7 +135,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run smoke tests
-        run: playwright test --config=playwright.config.prod.ts
+        run: npx playwright test --config=playwright.config.prod.ts
 
       - name: Upload smoke test results
         if: failure()
