@@ -224,4 +224,60 @@
     font-style: italic;
     @apply text-ot-muted;
   }
+
+  .prose-ot a {
+    @apply text-ot-accent underline transition-colors hover:text-ot-accent-hover;
+  }
+
+  .prose-ot strong {
+    @apply font-semibold text-ot-text;
+  }
+
+  .prose-ot em {
+    font-style: italic;
+  }
+
+  .prose-ot ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-ot ol li {
+    margin-bottom: 0.4rem;
+    @apply text-ot-muted;
+  }
+
+  .prose-ot img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .prose-ot table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    @apply text-ot-muted;
+  }
+
+  .prose-ot th {
+    @apply bg-ot-surface text-ot-text;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid hsl(var(--ot-border));
+  }
+
+  .prose-ot td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid hsl(var(--ot-border));
+  }
+
+  .prose-ot hr {
+    border: none;
+    border-top: 1px solid hsl(var(--ot-border));
+    margin: 2rem 0;
+  }
 }

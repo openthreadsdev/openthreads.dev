@@ -1,0 +1,20 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Fix redirect chain: consolidate to single-hop redirects
+# Force both HTTP and non-www HTTPS to redirect directly to www HTTPS
+
+# Redirect http://openthreads.dev to https://www.openthreads.dev (single hop)
+[[redirects]]
+  from = "http://openthreads.dev/*"
+  to = "https://www.openthreads.dev/:splat"
+  status = 301
+  force = true
+
+# Redirect https://openthreads.dev to https://www.openthreads.dev (single hop)
+[[redirects]]
+  from = "https://openthreads.dev/*"
+  to = "https://www.openthreads.dev/:splat"
+  status = 301
+  force = true

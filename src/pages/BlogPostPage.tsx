@@ -6,39 +6,36 @@ import { PostCard } from "@/components/PostCard";
 import { config } from "@/lib/config";
 import { SEOHead, StructuredData } from "@/components/seo";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schemas";
+import { marked } from "marked";
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+import typescript from "highlight.js/lib/languages/typescript";
+import bash from "highlight.js/lib/languages/bash";
+import json from "highlight.js/lib/languages/json";
+import "highlight.js/styles/github-dark.css";
 
-// Simple markdown-like renderer for the static blog content
-function renderContent(content: string): string {
-  return content
-    .trim()
-    .split("\n")
-    .map((line) => {
-      if (line.startsWith("## "))
-        return `<h2 class="text-2xl font-bold text-ot-text mt-10 mb-4">${line.slice(3)}</h2>`;
-      if (line.startsWith("### "))
-        return `<h3 class="text-lg font-semibold text-ot-text mt-8 mb-3">${line.slice(4)}</h3>`;
-      if (line.startsWith("- ")) {
-        return `<li class="text-ot-muted leading-relaxed">${line.slice(2).replace(/\*\*(.*?)\*\*/g, '<strong class="text-ot-text font-semibold">$1</strong>')}</li>`;
-      }
-      if (line === "") return `</ul><p class="mb-0"></p>`;
-      const inlineLine = line
-        .replace(
-          /\*\*(.*?)\*\*/g,
-          '<strong class="text-ot-text font-semibold">$1</strong>'
-        )
-        .replace(
-          /`(.*?)`/g,
-          '<code class="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">$1</code>'
-        );
-      return `<p class="text-ot-muted leading-relaxed mb-4">${inlineLine}</p>`;
-    })
-    .join("\n")
-    .replace(/<\/ul>\n<p class="mb-0"><\/p>\n<li/g, "<li")
-    .replace(
-      /(<li.*?<\/li>\n?)+/g,
-      (match) => `<ul class="list-disc pl-5 space-y-1.5 mb-4">${match}</ul>`
-    );
-}
+// Register languages for syntax highlighting
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("typescript", typescript);
+hljs.registerLanguage("bash", bash);
+hljs.registerLanguage("json", json);
+
+// Configure marked with syntax highlighting using renderer
+const renderer = new marked.Renderer();
+const originalCodeRenderer = renderer.code.bind(renderer);
+renderer.code = ({ text, lang }: { text: string; lang?: string }) => {
+  if (lang && hljs.getLanguage(lang)) {
+    const highlighted = hljs.highlight(text, { language: lang }).value;
+    return `<pre><code class="hljs language-${lang}">${highlighted}</code></pre>`;
+  }
+  return originalCodeRenderer({ text, lang });
+};
+
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: false, // Don't treat \n as <br>
+  renderer,
+});
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -136,7 +133,7 @@ export default function BlogPostPage() {
         <div className="ot-container max-w-3xl">
           <div
             className="prose-ot"
-            dangerouslySetInnerHTML={{ __html: renderContent(post.content) }}
+            dangerouslySetInnerHTML={{ __html: marked.parse(post.content) }}
           />
         </div>
       </section>
