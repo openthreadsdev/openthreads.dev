@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run sitemap && vite build",
+    "build": "npm run sitemap && vite build && npm run prerender",
     "build:dev": "vite build --mode development",
+    "prerender": "tsx scripts/prerender-meta-tags.ts",
     "lint": "eslint . && npm run lint:spelling",
     "lint:spelling": "tsx scripts/check-british-spelling.ts",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
