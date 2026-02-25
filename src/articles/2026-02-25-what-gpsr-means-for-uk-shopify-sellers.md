@@ -122,7 +122,7 @@ Several member states are still finalising their penalty frameworks. Germany, fo
 
 ## What about the UK's own product safety rules?
 
-The UK passed the [Product Regulation and Metrology Act 2025](https://www.legislation.gov.uk/ukpga/2025/20), which received Royal Assent in July 2025. This is framework legislation—it gives the government powers to update product safety rules through secondary legislation, which is expected throughout 2026.
+The UK passed the <a href="https://www.legislation.gov.uk/ukpga/2025/20" target="_blank" rel="nofollow noopener noreferrer">Product Regulation and Metrology Act 2025</a>, which received Royal Assent in July 2025. This is framework legislation—it gives the government powers to update product safety rules through secondary legislation, which is expected throughout 2026.
 
 The Act allows the UK to either align with or diverge from EU standards. For now, UK domestic product safety rules remain largely based on the pre-Brexit framework, but this is expected to evolve.
 
@@ -176,7 +176,7 @@ If the answer is "not confidently," the issue is probably not legal knowledge. I
 - [EU Consumer Goods General Product Safety Regulation — US International Trade Administration](https://www.trade.gov/market-intelligence/eu-consumer-goods-general-product-safety-regulation-gpsr)
 - [EU General Product Safety Regulation — Access2Markets](https://trade.ec.europa.eu/access-to-markets/en/news/eus-general-product-safety-regulation-gpsr-new-era-consumer-protection)
 - [GPSR Detailed Guidance — GOV.UK](https://www.gov.uk/government/publications/general-product-safety-regulations-northern-ireland/eu-regulation-2023988-on-general-product-safety-detailed-guidance)
-- [Product Regulation and Metrology Act 2025 — UK Legislation](https://www.legislation.gov.uk/ukpga/2025/20)
+- <a href="https://www.legislation.gov.uk/ukpga/2025/20" target="_blank" rel="nofollow noopener noreferrer">Product Regulation and Metrology Act 2025 — UK Legislation</a>
 - [What is GPSR and Why Is It a Big Deal for Small British Businesses — Best for Britain](https://www.bestforbritain.org/what_is_gpsr)
 - [Understanding the GPSR — Shopify Help Center](https://help.shopify.com/en/manual/international/gpsr)
 - [GPSR: How UK Sellers Can Stay Compliant — Simply Business](https://www.simplybusiness.co.uk/knowledge/retail/gpsr-small-business-updates/)
