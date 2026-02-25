@@ -1,5 +1,4 @@
 import Layout from "../components/layout/Layout";
-import { GetStaticProps } from "next";
 import Link from "next/link";
 
 function Opportunities({ config, newsletterId, newsletterUser }) {
