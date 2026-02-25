@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { config } from "@/lib/config";
 import { SEOHead, StructuredData } from "@/components/seo";
 import { generateBreadcrumbSchema } from "@/lib/schemas";
