@@ -3,7 +3,6 @@ import { Clock, ArrowLeft, Share2 } from "lucide-react";
 import { getPostBySlug, getRelatedPosts, posts, formatDate } from "@/lib/blog";
 import { OtTag } from "@/components/OtTag";
 import { PostCard } from "@/components/PostCard";
-import { config } from "@/lib/config";
 import { SEOHead, StructuredData } from "@/components/seo";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schemas";
 import { marked } from "marked";
