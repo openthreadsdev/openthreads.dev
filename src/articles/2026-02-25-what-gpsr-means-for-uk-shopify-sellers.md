@@ -1,6 +1,6 @@
 ---
 title: "What GPSR Means for UK Shopify Sellers in 2026"
-description: "A look at the recent changes to the regulation, and what merchants should be aware of."
+description: "What UK Shopify sellers need to know about GPSR in 2026: EU responsible person, labelling, technical documentation, and distance selling requirements. Practical checklist included."
 date: "2026-02-25"
 tags:
   - gpsr
