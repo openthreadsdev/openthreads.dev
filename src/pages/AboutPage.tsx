@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { config } from "@/lib/config";
 import { SEOHead, StructuredData } from "@/components/seo";
 import { generateBreadcrumbSchema } from "@/lib/schemas";

@@ -5,7 +5,6 @@ import {
   Layers,
   GitBranch,
   FileDown,
-  Users,
   BarChart3,
 } from "lucide-react";
 import { config } from "@/lib/config";
